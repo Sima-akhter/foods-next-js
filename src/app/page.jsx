@@ -1,6 +1,9 @@
 import BestFoods from "@/components/BestFoods";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import Stats from "@/components/Stats";
+
 import Image from "next/image";
 
 export default function Home() {
@@ -10,6 +13,8 @@ export default function Home() {
     <Hero></Hero>
     <BestFoods></BestFoods>
     <Features></Features>
+    <Services></Services>
+    <Stats></Stats>
 
    </div>
   );
