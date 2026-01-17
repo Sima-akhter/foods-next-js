@@ -1,6 +1,8 @@
 import BestFoods from "@/components/BestFoods";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
+import Newsletter from "@/components/Newsletter";
+import Reviews from "@/components/Reviews";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
 
@@ -15,6 +17,8 @@ export default function Home() {
     <Features></Features>
     <Services></Services>
     <Stats></Stats>
+    <Reviews></Reviews>
+    <Newsletter></Newsletter>
 
    </div>
   );
