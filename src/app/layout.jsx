@@ -4,6 +4,7 @@ import Link from "next/link";
 import CartProvider from "@/context/CartProvider";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Shared/Navbar";
+import { Toaster } from 'react-hot-toast'; // ১. ইমপোর্ট করুন
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,17 +27,21 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* টোস্টার কন্টেইনার যোগ করা হলো */}
+        <Toaster position="top-center" reverseOrder={false} />
 
-        <header className="">
-          <Navbar></Navbar>
-
+        <header>
+          <Navbar />
         </header>
-        
 
-        <main className="px-5 py-8">
-         <CartProvider>{children}</CartProvider>
+        <main className="px-5 py-8 min-h-[80vh]">
+          {/* আপনার CartProvider এর ভেতরেই children এবং Toaster কাজ করবে */}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </main>
-        <Footer></Footer>
+
+        <Footer />
       </body>
     </html>
   );

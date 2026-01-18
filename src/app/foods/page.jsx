@@ -24,14 +24,14 @@ const FoodsPage = async({searchParams}) => {
          <InputSearch></InputSearch>
         </div>
 
-       <div className='flex gap-5'>
-         <div className='flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-5  gap-5'>
+       <div className='md:flex gap-5'>
+         <div className='flex-1  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-5  gap-5'>
             {
                 foods.map((food)=>(<FoodCard key={food.id} food={food}></FoodCard>))
             }
 
         </div>
-        <div className='w-[250px] border-2 rounded-xl p-4'>
+        <div className='w-full flex-col-reverse md:w-1/4  border-2 rounded-xl p-4'>
            <h2 className='text-2xl font-bold'>Cart Items</h2> <hr />
            <CartItems></CartItems>
         </div>

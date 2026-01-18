@@ -19,7 +19,7 @@ const BestFoods = async() => {
     
   return (
     <div> 
-        <h2 className='text-4xl text-center font-bold my-10'>Best Foods </h2>
+        <h2 className='text-4xl md:text-5xl text-center font-bold my-10'>Best <span className='text-blue-600'>Foods</span> </h2>
 
        <div className='flex gap-5'>
          <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  my-5  gap-5'>

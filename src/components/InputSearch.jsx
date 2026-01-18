@@ -19,8 +19,8 @@ const InputSearch = () => {
     }
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-            <input name='search' className='px-1 py-3 border-2 rounded w-2xl' type="text" placeholder='Enter food name' />
+        <form onSubmit={handleSubmit} className='flex flex-col md:flex-row'>
+            <input name='search' className='px-1 py-3 border-2 rounded md:w-2xl' type="text" placeholder='Enter food name' />
             <button className='px-4 py-2 bg-amber-500 text-black rounded cursor-pointer'>Search</button>
         </form>
     </div>
