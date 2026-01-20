@@ -1,20 +1,41 @@
+
 import { MongoClient, ServerApiVersion } from "mongodb";
 
- const dbConnect = async (collectionName) => {
-  const uri = process.env.MONGODB_URI; // নিশ্চিত করুন আপনার .env.local ফাইলে কানেকশন স্ট্রিং আছে
-  const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    },
-  });
-
-  try {
-    const db = client.db("food-menu-db"); // আপনার ডাটাবেসের নাম এখানে দিন
-    return db.collection(collectionName);
-  } catch (error) {
-    console.log("Database connection error:", error);
-  }
+const uri = process.env.MONGODB_URI;
+console.log(uri)
+const options = {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 };
-export default dbConnect
+
+let client;
+let clientPromise;
+
+if (!process.env.MONGODB_URI) {
+  throw new Error("Please add your Mongo URI to .env.local");
+}
+
+// In development mode, use a global variable so the connection is preserved 
+// across module reloads caused by HMR (Hot Module Replacement).
+if (process.env.NODE_ENV === "development") {
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri, options);
+    global._mongoClientPromise = client.connect();
+  }
+  clientPromise = global._mongoClientPromise;
+} else {
+  // In production mode, it's best to not use a global variable.
+  client = new MongoClient(uri, options);
+  clientPromise = client.connect();
+}
+
+const dbConnect = async (collectionName) => {
+  const connectedClient = await clientPromise;
+  const db = connectedClient.db("food-menu-db");
+  return db.collection(collectionName);
+};
+
+export default dbConnect;
