@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-slate-900 sticky top-0 z-50 shadow-lg shadow-slate-900/20">
+    <header className="bg-slate-900  fixed top-0 left-0 right-0 z-50 shadow-lg shadow-slate-900/20 ">
       <div className="px-6 py-3 flex items-center justify-between gap-5 max-w-7xl mx-auto">
         
         {/* Logo Section */}
