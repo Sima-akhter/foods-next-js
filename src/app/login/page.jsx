@@ -12,8 +12,6 @@ const LoginPage = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-
-        
         if (email === "admin@mail.com" && password === "123456") {
             
             Cookies.set('user_email', email, { expires: 10 });
@@ -47,7 +45,8 @@ const LoginPage = () => {
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input 
                                 name="email"
-                                type="email" 
+                                type="email"
+                                defaultValue={"admin@mail.com"} 
                                 required
                                 placeholder="admin@mail.com"
                                 className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-blue-600 transition-colors"
@@ -61,7 +60,8 @@ const LoginPage = () => {
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input 
                                 name="password"
-                                type="password" 
+                                type="password"
+                                defaultValue={"123456"} 
                                 required
                                 placeholder="••••••••"
                                 className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-blue-600 transition-colors"
